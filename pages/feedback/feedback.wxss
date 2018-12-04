@@ -1,0 +1,36 @@
+/* pages/feedback/feedback.wxss */
+
+.feedback-input {
+  font-size: 13pt;
+  color: #353535;
+  margin: 20rpx 20rpx 40rpx;
+  padding: 10rpx;
+  width: 710rpx;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 10rpx;
+}
+
+.feedback-list {
+  margin: 40rpx 25rpx;
+}
+
+.feedback-item {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 15rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+
+.feedback-item-content {
+  font-size: 13pt;
+  color: #353535;
+  margin-top: 10rpx;
+}
+
+.feedback-item-time {
+  color: #888;
+  font-size: 11pt;
+}

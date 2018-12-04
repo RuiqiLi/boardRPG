@@ -1,0 +1,12 @@
+<!--pages/rules/rules.wxml-->
+<block wx:if="{{canIUseRichText}}">
+  <rich-text nodes="{{nodes}}"></rich-text>
+</block>
+<block wx:else>
+  <view class="container">
+    <view class="tip g-tip">提示：您的微信版本过低，无法支持富文本显示，请升级到最新版。</view>
+    <view class="btn-back-wrap">
+      <button class="g-btn-middle g-btn-normal" bindtap="onTapExit">返回</button>
+    </view>
+  </view>
+</block>

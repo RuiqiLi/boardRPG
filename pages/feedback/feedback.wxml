@@ -1,0 +1,17 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="container">
+  <view class="scroller">
+    <textarea class="feedback-input" maxlength="-1" placeholder="问题或建议" bindinput="onInputMessage" value="{{message}}" />
+    <button class="g-btn-large g-btn-green" bindtap="onTapSubmit">提交</button>
+    <block wx:if="{{isAdmin}}">
+      <view class="feedback-list">
+        <block wx:for="{{adminAllMessages}}">
+          <view class="feedback-item">
+            <text class="feedback-item-time">{{item.created}}</text>
+            <text class="feedback-item-content">用户{{item.user_id}}：{{item.message}}</text>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+/**group.wxss**/
+
+.userinfo {
+  display: flex;
+  padding: 40rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 20rpx;
+}
+
+.userinfo-nickname {
+  color: #353535;
+  font-size: 14pt;
+  line-height: 14pt;
+  margin-top: 5rpx;
+  margin-left: 25rpx;
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+}
+
+.hint-net-error {
+  position: absolute;
+  top: 40rpx;
+  right: 40rpx;
+  color: #888;
+  font-size: 11pt;
+}
+
+.btn-settings {
+  color: #576B95;
+  font-size: 11pt;
+  position: absolute;
+  top: 42rpx;
+  right: 40rpx;
+}
+
+.btn-settings:active {
+  color: rgba(87, 107, 149, 0.2);
+}

@@ -1,0 +1,10 @@
+/* pages/rules/rules.wxss */
+@import "../../common/richtext.wxss";
+.tip {
+  margin-top: 25rpx;
+}
+.btn-back-wrap {
+  position: absolute;
+  width: 100%;
+  bottom: 50rpx;
+}

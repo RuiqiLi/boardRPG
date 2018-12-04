@@ -1,0 +1,105 @@
+<!--avalon.wxml-->
+<view class="container">
+  <view class="players {{players?(players.length>5?'two-height':'one-height'):''}}" bindtap="onTapPlayers">
+    <view wx:for="{{players}}" class="userinfo" wx:key="{{item.userId}}">
+      <image class="userinfo-avatar" src="{{item.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{item.realName?item.realName:item.nickName}}</text>
+      <!--游戏开始前隐藏身份-->
+      <block wx:if="{{turn<1}}"><text class="userinfo-role">？</text></block>
+      <!--游戏过程中显示部分身份-->
+      <block wx:elif="{{turn<=6&&killPlayer==0}}">
+        <!--如果打开了隐藏-->
+        <text class="userinfo-role userinfo-role-show" wx:if="{{hideRole}}">隐藏</text>
+        <!--自己的身份-->
+        <text class="userinfo-role userinfo-role-show" wx:elif="{{playerNo==item.playerNo}}">{{roleName[userRole]}}</text>
+        <!--梅林-->
+        <text class="userinfo-role{{(item.userRole=='mgn'||item.userRole=='ck'||item.userRole=='abl'||item.userRole=='zy')?' userinfo-role-show':''}}" wx:elif="{{userRole=='ml'}}">坏</text>
+        <!--派西维尔-->
+        <text class="userinfo-role{{(item.userRole=='ml'||item.userRole=='mgn')?' userinfo-role-show':''}}" wx:elif="{{userRole=='pxwe'}}">梅/莫</text>
+        <!--坏人（除了奥伯伦）-->
+        <text class="userinfo-role{{(item.userRole=='mgn'||item.userRole=='ck'||item.userRole=='mdld'||item.userRole=='zy')?' userinfo-role-show':''}}" wx:elif="{{userRole=='mgn'||userRole=='ck'||userRole=='mdld'||userRole=='zy'}}">{{badKnowOthers?roleName[item.userRole]:'坏'}}</text>
+        <!--忠臣-->
+        <text class="userinfo-role" wx:elif="{{userRole=='zc'}}">？</text>
+        <!--奥伯伦-->
+        <text class="userinfo-role" wx:else>？</text>
+      </block>
+      <!--游戏结束后显示所有身份-->
+      <block wx:else><text class="userinfo-role userinfo-role-show">{{roleName[item.userRole]}}</text></block>
+    </view>
+  </view>
+  <view class="room-info">
+    <text class="num-txt" wx:if="{{roomNo==-1}}">房间人数（未设置）</text>
+    <text class="num-txt" wx:elif="{{players.length!=playerNum}}">房间人数（{{players.length+'/'+playerNum}}）</text>
+    <view class="letter-view" wx:else bindtap="onTapLetter">
+      <image class="letter" src="/imgs/letter.png" mode="widthFix"></image>
+      <text class="letter-name">收信箱</text>
+    </view>
+    <block wx:if="{{!netError}}">
+      <picker class="g-btn-txt" wx:if="{{roomNo==-1}}" range="{{playerNumArray}}" bindchange="onChangeNumPicker">人数配置</picker>
+      <text class="g-btn-txt" wx:else bindtap="onTapRoomBtn">选项</text>
+    </block>
+  </view>
+  <view class="desc" wx:if="{{netError}}">网络错误，请检查网络连接<!--下拉刷新--></view>
+  <view class="desc" wx:elif="{{roomNo==-1}}">请先配置游戏人数</view>
+  <view class="desc" wx:elif="{{players.length<playerNum}}">右上角点击[转发]分享给好友，即可邀ta进入房间</view>
+  <view class="board {{players?(players.length>5?'board-two-height':'board-one-height'):''}}">
+    <block wx:if="{{roomNo!=-1}}">
+      <!--人不齐时-->
+      <text class="hint-txt" wx:if="{{players.length<playerNum}}">等待好友加入<!--，下拉刷新--></text>
+      <!--人齐，游戏开始前-->
+      <block wx:elif="{{turn==0&&!netError}}">
+        <button class="g-btn-middle g-btn-green" wx:if="{{playerNo==1}}" bindtap="onTapStart">游戏开始</button>
+        <text class="hint-txt" wx:else>等待 {{players[0].realName?players[0].realName:players[0].nickName}} 开始游戏</text>
+      </block>
+      <!--投票历史-->
+      <swiper class="board-history" wx:if="{{turn>=1}}" current="{{missionStatus.length}}" indicator-dots="{{true}}">
+        <swiper-item class="board-history-item">
+          <view class="gap">本局游戏随机队长为：{{captainName}}</view>
+          <view class="gap">每轮任务人数<block wx:for="{{missionRequire[playerNum]}}" wx:key="{{index}}"> {{item}}{{playerNum>=7&&index==3?'*':''}}</block></view>
+          <view class="gap">左右滑动可查看任务记录</view>
+        </swiper-item>
+        <block wx:for="{{missionStatus}}" wx:key="{{item.turn}}">
+          <swiper-item class="board-history-item">
+            <view class="mission-title" wx:if="{{item.win=='good'}}">第{{item.turn}}轮任务 <text class="win-good">成功</text></view>
+            <view class="mission-title" wx:elif="{{item.win=='bad'}}">第{{item.turn}}轮任务 <text class="win-bad">失败</text></view>
+            <view class="mission-title" wx:else>第{{item.turn}}轮任务（{{item.votes.length+'/'+missionRequire[playerNum][item.turn-1]}}）</view>
+            <view class="mission-votes" wx:if="{{item.win}}">{{item.good}}张成功，{{item.bad}}张失败</view>
+            <view class="mission-player-block">
+              <view class="mission-player" wx:for="{{item.votes}}" wx:for-item="voteItem" wx:for-index="voteIndex" wx:key="voteItem.playerNo">{{voteItem.name}} </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+      <!--投票阶段-->
+      <view class="board-operator g-btn-group" wx:if="{{turn>=1&&turn<=5&&!netError}}">
+        <button class="g-btn-small g-btn-green" bindtap="onTapDoMission">做任务</button>
+        <button class="g-btn-small g-btn-grey" bindtap="onTapVotePage">投票页面</button>
+      </view>
+      <!--好人票赢，刺杀阶段-->
+      <view class="board-operator" wx:elif="{{turn==6&&killPlayer==0&&!netError}}">
+        <button class="g-btn-middle g-btn-red" wx:if="{{userRole=='ck'}}" bindtap="onTapKill">刺杀梅林</button>
+        <text class="hint-txt" wx:else>等待刺客刺杀梅林</text>
+      </view>
+      <!--好人票赢，刺杀后，游戏结束-->
+      <view class="board-operator" wx:elif="{{turn==6&&killPlayer!=0&&!netError}}">
+        <!--刺杀成功-->
+        <view class="hint-txt" wx:if="{{mlNo==killPlayer}}">
+          <view class="underboard-info">刺客指认 {{killPlayerName}} 是梅林，刺杀成功</view>
+          <view class="win-bad">坏人胜利！</view>
+        </view>
+        <!--刺杀失败-->
+        <view class="hint-txt" wx:else>
+          <view class="underboard-info">刺客指认 {{killPlayerName}} 是梅林，刺杀失败</view>
+          <view class="win-good">好人胜利！</view>
+        </view>
+      </view>
+      <!--坏人票赢，游戏结束-->
+      <view class="board-operator" wx:elif="{{turn==7&&!netError}}">
+        <view class="hint-txt">
+          <text class="underboard-info">任务失败3次，</text>
+          <text class="win-bad">坏人胜利！</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

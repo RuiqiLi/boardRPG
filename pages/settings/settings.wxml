@@ -1,0 +1,6 @@
+<!--settings.wxml-->
+<view class="container">
+<view class="real-name-label">设置游戏中使用名称</view>
+<input class="real-name-input" value="{{realName}}" placeholder="请输入名称" bindinput="onInputRealName" />
+<button class="g-btn-large g-btn-green submit-btn" bindtap="onTapSubmit">保存</button>
+</view>

@@ -1,0 +1,16 @@
+<!--group.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.realName?userInfo.realName:userInfo.nickName}}</text>
+    <block wx:if="{{authFailed}}">
+      <text class="btn-settings" bindtap="onTapNeedAuth">需要权限，点此授权</text>
+    </block>
+    <block wx:elif="{{netError}}">
+      <text class="hint-net-error">无网络连接</text>
+    </block>
+    <block wx:elif="{{infoLoaded}}">
+      <text class="btn-settings" bindtap="onTapUserInfo">设置</text>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,17 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/version/version",
+    "pages/feedback/feedback",
+    "pages/letter/letter",
+    "pages/rules/rules",
+    "pages/settings/settings",
+    "pages/avalon/avalon",
+    "pages/avalonVote/avalonVote"
+  ],
+  "window":{
+    "navigationBarBackgroundColor":"#373B3E",
+    "navigationBarTextStyle":"white",
+    "navigationBarTitleText":"桌游游戏助手"
+  }
+}

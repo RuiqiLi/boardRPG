@@ -1,0 +1,40 @@
+/**avalonVote.wxss**/
+.vote-list {
+  margin-top: 100rpx;
+  color: #353535;
+  text-align: center;
+}
+
+.vote-captain {
+  font-size: 15pt;
+  margin-bottom: 35rpx;
+}
+
+.vote-player {
+  font-size: 13pt;
+  margin-top: 20rpx;
+}
+
+.vote-count {
+  font-size: 15pt;
+  margin-top: 35rpx;
+}
+
+.operator {
+  position: fixed;
+  width: 100%;
+  height: 400rpx;
+  min-height: 400rpx;
+  max-height: 400rpx;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hint-txt {
+  color: #888;
+  font-size: 13pt;
+  margin-bottom: 25rpx;
+}

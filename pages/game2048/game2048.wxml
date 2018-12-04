@@ -1,0 +1,30 @@
+<!--pages/game2048/game2048.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.realName?userInfo.realName:userInfo.nickName}}</text>
+  </view>
+  <view class="boards">
+    <view class="score-board">
+      <text class="score-txt">得分</text>
+      <text class="score-num">{{score}}</text>
+    </view>
+    <view class="score-board">
+      <text class="score-txt">最高分</text>
+      <text class="score-num">{{bestScore}}</text>
+    </view>
+  </view>
+  <view class="btns">
+    <button class="restart-btn" bindtap="onTapRestart">重新开始</button>
+    <button class="rank-btn" bindtap="onTapRank">排行榜</button>
+  </view>
+  <view class="table" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd">
+    <view class="grid-container">
+      <view wx:for="{{table}}" wx:key="{{index}}" class="grid-cell num-pos-{{index}}"></view>
+    </view>
+    <block wx:for="{{table}}">
+      <view wx:if="{{item}}" class="num-item num-{{item}} num-pos-{{index}}" animation="{{animations[index]}}">{{item}}</view>
+    </block>
+  </view>
+  <view class="gameover" wx:if="{{gameover}}">游戏结束！</view>
+</view>

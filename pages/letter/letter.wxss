@@ -1,0 +1,44 @@
+/* pages/letter/letter.wxss */
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30rpx 0 0 50rpx;
+  padding: 0 50rpx 30rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+.item-image {
+  width: 40rpx;
+}
+.item-title {
+  font-size: 13pt;
+  color: #353535;
+}
+
+.title {
+  font-size: 15pt;
+  color: #353535;
+  padding: 50rpx 70rpx 20rpx;
+}
+.time {
+  font-size: 11pt;
+  color: #888;
+  padding: 0 70rpx 20rpx;
+}
+.paragraph {
+  font-size: 13pt;
+  color: #353535;
+  padding: 35rpx 70rpx;
+  line-height: 23pt;
+}
+.imgDesc {
+  text-align: center;
+  color: #888;
+  font-size: 13pt;
+  margin: 150rpx 0 20rpx;
+}
+.image {
+  width: 400rpx;
+  border-radius: 10rpx;
+  margin: 0 0 150rpx 175rpx;
+}

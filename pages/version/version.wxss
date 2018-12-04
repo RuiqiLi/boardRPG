@@ -1,0 +1,27 @@
+/* pages/version/version.wxss */
+.item {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 0 0 25rpx;
+  padding: 0 25rpx 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+.item-title {
+  font-size: 11pt;
+  color: #353535;
+}
+.item-date {
+  font-size: 9pt;
+  color: #888;
+  margin-top: 10rpx;
+}
+
+.change {
+  margin: 30rpx 25rpx 0;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.change-txt {
+  font-size: 11pt;
+  color: #353535;
+}

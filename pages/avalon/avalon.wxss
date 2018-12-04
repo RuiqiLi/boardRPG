@@ -1,0 +1,183 @@
+/**avalon.wxss**/
+
+.players {
+  background: white;
+  padding: 10rpx 0;
+  box-sizing: content-box;
+}
+
+.one-height {
+  height: 215rpx;
+  min-height: 215rpx;
+}
+
+.two-height {
+  height: 430rpx;
+  min-height: 430rpx;
+}
+
+.userinfo {
+  width: 120rpx;
+  height: 200rpx;
+  margin-top: 15rpx;
+  margin-left: 25rpx;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 20rpx;
+}
+
+.userinfo-nickname {
+  color: #353535;
+  font-size: 11pt;
+  line-height: 11pt;
+  margin-top: 10rpx;
+  width: 120rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+}
+
+.userinfo-role {
+  color: white;
+  font-size: 9pt;
+  margin-top: 10rpx;
+  width: 120rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+}
+
+.userinfo-role-show {
+  color: #353535;
+}
+
+.room-info {
+  margin-top: 15rpx;
+  height: 100rpx;
+  min-height: 100rpx;
+  padding: 0 25rpx;
+  box-sizing: border-box;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.letter-view {
+  display: flex;
+  align-items: center;
+  font-size: 11pt;
+  color: #353535;
+}
+
+.letter-view:active {
+  color: rgba(87, 107, 149, 0.2);
+}
+
+.letter {
+  width: 50rpx;
+  margin: 0 10rpx;
+}
+
+.num-txt {
+  color: #353535;
+  font-size: 13pt;
+}
+
+.desc {
+  background: white;
+  padding: 0 25rpx 15rpx;
+  box-sizing: border-box;
+  color: #888;
+  font-size: 11pt;
+}
+
+.board {
+  margin-top: 15rpx;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-one-height {
+  max-height: 850rpx;
+}
+
+.board-two-height {
+  max-height: 625rpx;
+}
+
+.hint-txt {
+  color: #888;
+  font-size: 13pt;
+  text-align: center;
+  width: 100%;
+}
+
+.board-history {
+  width: 100%;
+  height: 100%;
+  padding: 25rpx 25rpx 65pt;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.board-history-item {
+  background: #f8f8f8;
+  border-radius: 15rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 13pt;
+  color: #353535;
+}
+
+.gap+.gap {
+  margin-top: 10rpx;
+}
+
+.mission-votes {
+  font-size: 11pt;
+  margin: 10rpx 0;
+}
+
+.win-good {
+  color: rgb(38, 171, 40);
+}
+
+.win-bad {
+  color: rgb(228, 69, 70);
+}
+
+.mission-title+.mission-player-block {
+  margin-top: 10rpx;
+}
+
+.mission-player+.mission-player {
+  margin-top: 5rpx;
+}
+
+.board-operator {
+  position: absolute;
+  bottom: 25pt;
+  left: 50rpx;
+  width: 650rpx;
+  display: flex;
+}
+
+.underboard-info+.win-good,.underboard-info+.win-bad {
+  margin-top: 10rpx;
+}

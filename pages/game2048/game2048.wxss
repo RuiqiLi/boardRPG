@@ -1,0 +1,236 @@
+/* pages/game2048/game2048.wxss */
+.container {
+  background: #faf8ef;
+}
+
+.userinfo {
+  width: 120rpx;
+  height: 200rpx;
+  margin-top: 75rpx;
+  margin-left: 75rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #353535;
+  font-size: 11pt;
+  line-height: 11pt;
+  margin-top: 10rpx;
+  width: 120rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+}
+
+.boards {
+  position: absolute;
+  top: 75rpx;
+  right: 75rpx;
+}
+
+.score-board {
+  background: #bbada0;
+  font-size: 13pt;
+  color: white;
+  padding: 15rpx 20rpx;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+  margin-left: 25rpx;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.score-num {
+  margin-top: 10rpx;
+}
+
+.btns {
+  display: flex;
+  width: 600rpx;
+  margin-left: 75rpx;
+  justify-content: space-between;
+}
+
+.restart-btn, .rank-btn {
+  background: #8f7a66;
+  color: white;
+  font-size: 13pt;
+  width: 40%;
+  margin-top: 10rpx;
+}
+
+.restart-btn:active, .rank-btn:active {
+  background: #846f5a;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.table {
+  position: absolute;
+  left: 75rpx;
+  bottom: 150rpx;
+  background: #bbada0;
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 8rpx;
+}
+
+.gameover {
+  position: absolute;
+  left: 75rpx;
+  bottom: 150rpx;
+  width: 600rpx;
+  height: 600rpx;
+  line-height: 600rpx;
+  text-align: center;
+  color: #353535;
+  font-size: 13pt;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 8rpx;
+}
+
+.grid-cell {
+  position: absolute;
+  width: 130rpx;
+  height: 130rpx;
+  background: rgba(238, 228, 218, 0.35);
+  border-radius: 4rpx;
+}
+
+.num-item {
+  position: absolute;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 4rpx;
+  line-height: 130rpx;
+  text-align: center;
+  font-size: 17pt;
+  font-weight: bold;
+  color: #353535;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.num-2 {
+  background: #eee4da;
+  box-shadow: 0 0 60rpx 20rpx rgba(243, 215, 116, 0), inset 0 0 0 2rpx rgba(255, 255, 255, 0);
+}
+.num-4 {
+  background: #ede0c8;
+  box-shadow: 0 0 60rpx 20rpx rgba(243, 215, 116, 0), inset 0 0 0 2rpx rgba(255, 255, 255, 0);
+}
+.num-8 {
+  color: #f9f6f2;
+  background: #f2b179;
+}
+.num-16 {
+	color: #f9f6f2;
+  background: #f59563;
+}
+.num-32 {
+	color: #f9f6f2;
+  background: #f67c5f;
+}
+.num-64 {
+	color: #f9f6f2;
+  background: #f65e3b;
+}
+.num-128 {
+	color: #f9f6f2;
+  background: #edcf72;
+  box-shadow: 0 0 60rpx 20rpx rgba(243, 215, 116, 0.2381), inset 0 0 0 2rpx rgba(255, 255, 255, 0.14286);
+}
+.num-256 {
+	color: #f9f6f2;
+  background: #edcc61;
+  box-shadow: 0 0 60rpx 20rpx rgba(243, 215, 116, 0.31746), inset 0 0 0 2rpx rgba(255, 255, 255, 0.19048);
+}
+.num-512 {
+  color: #f9f6f2;
+  background: #edc850;
+  box-shadow: 0 0 60rpx 20rpx rgba(243, 215, 116, 0.39683), inset 0 0 0 2rpx rgba(255, 255, 255, 0.2381);
+}
+.num-1024 {
+	color: #f9f6f2;
+  background: #edc53f;
+  box-shadow: 0 0 60rpx 20rpx rgba(243, 215, 116, 0.47619), inset 0 0 0 2rpx rgba(255, 255, 255, 0.28571);
+}
+.num-2048, .num-4096, .num-8192, .num-16384, .num-32768, .num-65536 {
+  color: #f9f6f2;
+  background: #edc22e;
+  box-shadow: 0 0 60rpx 20rpx rgba(243, 215, 116, 0.55556), inset 0 0 0 2rpx rgba(255, 255, 255, 0.33333);
+}
+
+.num-pos-0 {
+  left: 16rpx;
+  top: 16rpx;
+}
+.num-pos-1 {
+  left: 162rpx;
+  top: 16rpx;
+}
+.num-pos-2 {
+  left: 308rpx;
+  top: 16rpx;
+}
+.num-pos-3 {
+  left: 454rpx;
+  top: 16rpx;
+}
+.num-pos-4 {
+  left: 16rpx;
+  top: 162rpx;
+}
+.num-pos-5 {
+  left: 162rpx;
+  top: 162rpx;
+}
+.num-pos-6 {
+  left: 308rpx;
+  top: 162rpx;
+}
+.num-pos-7 {
+  left: 454rpx;
+  top: 162rpx;
+}
+.num-pos-8 {
+  left: 16rpx;
+  top: 308rpx;
+}
+.num-pos-9 {
+  left: 162rpx;
+  top: 308rpx;
+}
+.num-pos-10 {
+  left: 308rpx;
+  top: 308rpx;
+}
+.num-pos-11 {
+  left: 454rpx;
+  top: 308rpx;
+}
+.num-pos-12 {
+  left: 16rpx;
+  top: 454rpx;
+}
+.num-pos-13 {
+  left: 162rpx;
+  top: 454rpx;
+}
+.num-pos-14 {
+  left: 308rpx;
+  top: 454rpx;
+}
+.num-pos-15 {
+  left: 454rpx;
+  top: 454rpx;
+}

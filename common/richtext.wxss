@@ -1,0 +1,47 @@
+/* 富文本 */
+.article {
+  color: #353535;
+  letter-spacing: 2rpx;
+}
+.title {
+  font-size: 17pt;
+  line-height: 23pt;
+  margin: 40rpx 25rpx;
+}
+.content {
+  margin: 60rpx 25rpx;
+
+  font-size: 12pt;
+  text-align: justify;
+  line-height: 17pt;
+}
+.h1 {
+  margin: 100rpx 0 40rpx;
+  font-size: 15pt;
+  font-weight: bold;
+}
+.h2 {
+  margin: 60rpx 0 40rpx;
+}
+.p {
+  margin: 40rpx 0;
+}
+.hline {
+  margin: 10rpx 0 0;
+}
+.strong {
+  font-weight: bold;
+}
+.table {
+  font-size: 10pt;
+  text-align: center;
+}
+.thead {
+  border-bottom: 2rpx solid #353535;
+}
+.tleft {
+  border-right: 2rpx solid #353535;
+}
+.tw7 {
+  width: 110rpx;
+}

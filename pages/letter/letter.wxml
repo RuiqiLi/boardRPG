@@ -1,0 +1,24 @@
+<!--pages/letter/letter.wxml-->
+<view class="container">
+  <view class="scroller">
+    <block wx:if="{{title}}">
+      <block wx:if="{{content}}">
+        <view class="title">{{title}}</view>
+        <view class="time">{{time}}</view>
+        <view class="paragraph" wx:for="{{content}}" wx:key="{{index}}">{{item}}</view>
+        <view class="imgDesc">欢迎你关注我</view>
+        <image class="image" src="/imgs/qrcode.jpg" mode="widthFix" bindtap="onTapImage"></image>
+      </block>
+      <block wx:else>
+        <view class="paragraph">你拆开了神秘的信件。</view>
+      </block>
+    </block>
+
+    <block wx-else>
+      <view class="item" wx:for="{{letterList}}" wx:key="{{item.id}}" bindtap="onTapItem" data-letter-id="{{item.id}}" data-title="{{item.title}}" data-time="{{item.created}}">
+        <image class="item-image" src="/imgs/letter.png" mode="widthFix"></image>
+        <text class="item-title">《{{item.title}}》</text>
+      </view>
+    </block>
+  </view>
+</view>

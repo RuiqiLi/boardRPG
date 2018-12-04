@@ -1,0 +1,18 @@
+<!--pages/version/version.wxml-->
+<view class="container">
+  <view class="scroller">
+    <block wx:if="{{verNo}}">
+      <view class="change" wx:for="{{changes}}" wx:key="{{index}}">
+        <text class="change-txt">{{item.txt}}</text>
+        <!-- TODO 图片示例 -->
+      </view>
+    </block>
+
+    <block wx-else>
+      <view class="item" wx:for="{{updateHistory}}" wx:key="{{item.ver}}" bindtap="onTapItem" data-ver-no="{{item.ver}}">
+        <text class="item-title">v{{item.ver}}主要更新</text>
+        <text class="item-date">{{item.date}}</text>
+      </view>
+    </block>
+  </view>
+</view>

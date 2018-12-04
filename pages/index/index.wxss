@@ -1,0 +1,76 @@
+/**index.wxss**/
+
+.tip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1001;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300rpx;
+  padding: 50rpx 0;
+  background: white;
+  margin-bottom: 25rpx;
+}
+.header-logo {
+  width: 120rpx;
+  height: 120rpx;
+}
+.header-txt {
+  font-size: 13pt;
+  color: #353535;
+  margin-top: 20rpx;
+}
+.header-ver {
+  font-size: 11pt;
+  color: #576B95;
+  border: 1rpx solid #576B95;
+  border-radius: 20rpx;
+  width: 114rpx;
+  line-height: 36rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+.header-ver:active {
+  color: rgba(87, 107, 149, 0.2);
+  border: 1rpx solid rgba(87, 107, 149, 0.2);
+}
+
+.letter {
+  position: absolute;
+  top: 40rpx;
+  right: 45rpx;
+  width: 55rpx;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  height: 50rpx;
+  padding: 30rpx;
+  margin: 0 15rpx 25rpx;
+}
+.block-title {
+  font-size: 13pt;
+  color: #353535;
+}
+
+.color-avalon {
+  background-color: darksalmon;
+}
+.color-feedback {
+  background-color: burlywood;
+}
+.color-wolf {
+  background-color: darkseagreen;
+}
+.color-who {
+  background-color: cadetblue;
+}
