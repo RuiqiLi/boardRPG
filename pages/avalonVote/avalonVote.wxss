@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.checkbox {
+  color: #888;
+  display:flex;
+}
 .vote-captain {
   font-size: 15pt;
   margin-bottom: 35rpx;

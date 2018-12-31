@@ -4,6 +4,8 @@ var url = require('../../config/url.js')
 Page({
   data: {
     netError: false,
+    canDoMission: false,
+    votePass: false,
     time: 0,
     roomNo: -1,
     hideRole: false,
@@ -218,6 +220,8 @@ Page({
       captainName: "",
       delayMax: 4,
       badKnowOthers: true,
+      canDoMission: false,
+      votePass: false,
       captainCanVote: false,
       turn: 0,
       missionStatus: [],
@@ -244,6 +248,7 @@ Page({
         mlNo = players[i].playerNo
       }
     }
+    var votePass = wx.getStorageSync('votePass')
     var voteStatus = JSON.parse(statusInfo.voteStatus)
     this.setData({
       time: statusInfo.time,
@@ -254,6 +259,8 @@ Page({
       captainNo: statusInfo.captainNo,
       captainName,
       delayMax: statusInfo.delayMax,
+      canDoMission: statusInfo.canDoMission,
+      votePass,
       badKnowOthers: statusInfo.badKnowOthers,
       captainCanVote: statusInfo.captainCanVote,
       turn: statusInfo.turn,
@@ -714,6 +721,7 @@ Page({
     var playerNo = this.data.playerNo
     var playerNum = this.data.playerNum
     var captainCanVote = this.data.captainCanVote
+    wx.setStorageSync('players', this.data.players)
     this.enterVotePage(roomNo, playerNo, playerNum, captainCanVote)
   },
   onTapKill: function() {

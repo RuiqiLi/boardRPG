@@ -4,6 +4,7 @@ var url = require('../../config/url.js')
 Page({
   data: {
     voteStatus: [],
+    voters:[],
     captainCanVote: false,
     youVote: false,
     allVote: false,
@@ -16,8 +17,14 @@ Page({
     this.playerNo = options.playerNo
     this.playerNum = options.playerNum
     var captainCanVote = (options.captainCanVote == 1 ? true : false)
+    var players = wx.getStorageSync('players')
+    var voters = []
+    for (var i = 0; i < players.length; i++) {
+      voters.push({name: players[i].realName ? players[i].realName : players[i].nickName, value: players[i].playerNo})
+    }
     this.setData({
-      captainCanVote
+      captainCanVote,
+      voters
     })
     this.checkVoteStatus()
     if (!this.checkVoteStatusInterval) {
@@ -34,6 +41,10 @@ Page({
     }
   },
   // 自定义函数
+  checkboxChange: function(e) {
+    this.voters = e.detail.value
+    //console.log(this.voters)
+  },
   updateVoteStatus: function (voteStatus, captainCanVote) {
     var youVote = false
     var voteYes = 0
@@ -56,7 +67,17 @@ Page({
         }
       }
     }
-    var allVote = (voteStatus.length == this.playerNum)
+    var allVote = false;
+    if (voteStatus.length == this.playerNum) {
+      allVote = true
+      if (voteYes > voteNo) {
+        wx.setStorageSync('votePass', true)
+      } else {
+        wx.setStorageSync('votePass', false)
+      }
+    } else {
+      wx.setStorageSync('votePass', false)
+    }
     this.setData({
       voteStatus,
       youVote,
@@ -102,6 +123,7 @@ Page({
       url: url.avalonVoteURL,
       data: {
         roomNo: that.roomNo,
+        voters: that.voters,
         type: voteType
       },
       header: {

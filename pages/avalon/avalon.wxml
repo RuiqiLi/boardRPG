@@ -72,7 +72,7 @@
       </swiper>
       <!--投票阶段-->
       <view class="board-operator g-btn-group" wx:if="{{turn>=1&&turn<=5&&!netError}}">
-        <button class="g-btn-small g-btn-green" bindtap="onTapDoMission">做任务</button>
+        <button class="g-btn-small g-btn-green" disabled="{{canDoMission==false || votePass==false}}" bindtap="onTapDoMission">做任务</button>
         <button class="g-btn-small g-btn-grey" bindtap="onTapVotePage">投票页面</button>
       </view>
       <!--好人票赢，刺杀阶段-->

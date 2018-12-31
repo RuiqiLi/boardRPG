@@ -1,5 +1,15 @@
 <!--avalonVote.wxml-->
 <view class="container">
+  <view>
+    <block wx:if="{{voteStatus.length==0}}">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{voters}}" wx:key="key" wx:for-item="voter">
+            <checkbox value="{{voter.value}}" checked="{{voter.checked}}" />
+            {{voter.name}}
+        </label>
+      </checkbox-group>
+    </block>
+  </view>
   <view class="vote-list">
     <block wx:for="{{voteStatus}}" wx:key="{{voteStatus.playerNo}}">
       <block wx:if="{{item.type==0}}">
